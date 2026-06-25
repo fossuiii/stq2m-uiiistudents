@@ -534,6 +534,30 @@ body {
 }
 .filter-clear.visible { display: block; }
 
+  @media (max-width: 768px) {
+  .filter-section {
+    position: static;
+    top: auto;
+    z-index: auto;
+    padding: 14px 16px;
+  }
+
+  .filter-row {
+    gap: 6px;
+  }
+
+  .chip {
+    padding: 5px 12px;
+    font-size: 11px;
+  }
+
+  .filter-label {
+    min-width: auto;
+    width: 100%;
+    margin-bottom: 2px;
+  }
+}
+
 /* ===== MODULES ===== */
 .modules-section { background: var(--cream); }
 .modules-section.paper-bg { background-color: var(--cream); }
