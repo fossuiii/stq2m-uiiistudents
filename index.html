@@ -1661,12 +1661,63 @@ body {
   display: inline-block;
   vertical-align: middle;
 }
+/* ===== MOBILE FLOATING TOC ===== */
 
+.mobile-toc-toggle {
+  display: none;
+}
+
+@media (max-width:768px){
+
+  /* Hide desktop TOC */
+  .toc-nav{
+    display:none;
+  }
+
+  /* Floating button */
+  .mobile-toc-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:fixed;
+    left:16px;
+    bottom:20px;
+    z-index:9999;
+
+    background:var(--orange);
+    color:var(--white);
+
+    width:54px;
+    height:54px;
+
+    border-radius:999px;
+
+    font-size:22px;
+    cursor:pointer;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.18);
+  }
+
+  /* Open state */
+  .toc-nav.mobile-open{
+    display:flex !important;
+
+    left:16px;
+    bottom:86px;
+
+    top:auto;
+    transform:none;
+
+    min-width:250px;
+  }
+  
+}
 </style>
 </head>
 <body>
 
 <!-- ===== STICKY TABLE OF CONTENTS ===== -->
+<div class="mobile-toc-toggle">☰</div>
 <nav class="toc-nav" id="toc-nav" aria-label="Page sections">
   <a class="toc-item active" href="#hero-top" data-section="hero">
     <span class="toc-dot"></span>
@@ -3252,6 +3303,22 @@ body {
         }
       });
     });
+const mobileToggle = document.querySelector(".mobile-toc-toggle");
+const toc = document.querySelector(".toc-nav");
+
+if (mobileToggle && toc) {
+
+  mobileToggle.addEventListener("click", () => {
+    toc.classList.toggle("mobile-open");
+  });
+
+  document.querySelectorAll(".toc-item").forEach(item => {
+    item.addEventListener("click", () => {
+      toc.classList.remove("mobile-open");
+    });
+  });
+
+}  
   })();
 
 </script>
