@@ -1669,9 +1669,10 @@ body {
 
 @media (max-width:768px){
 
-  /* Hide desktop TOC */
-  .toc-nav{
+  /* Hide desktop TOC until opened */
+.toc-nav{
     display:none;
+    min-width:250px;
   }
 
   /* Floating button */
@@ -1710,7 +1711,17 @@ body {
 
     min-width:250px;
   }
+.toc-label,
+.toc-register-text{
+    opacity:1 !important;
+    max-width:200px !important;
+}
   
+.toc-nav:hover .toc-label,
+.toc-nav:hover .toc-register-text{
+    opacity:1;
+    max-width:200px;
+}
 }
 </style>
 </head>
